@@ -1,3 +1,8 @@
+---
+title: Simulating Shit for Fun and Profit 1
+usemathjax: true
+---
+
 # Simulating Shit for Fun and Profit 1
 
 A fascinating fact of physical theories is that they enable us to compute everything.
