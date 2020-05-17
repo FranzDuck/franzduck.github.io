@@ -5,8 +5,6 @@ date: 2020-5-17
 usemathjax: true
 ---
 
-Simulating Shit for Fun and Profit 1
-
 A fascinating fact of physical theories is that they enable us to compute everything.
 By that I mean, once you have found out the rules that govern a system, for example $$F = ma$$ for mechanics, you can in theory calculate any possible system described by those rules.
 No limitations on how far into the future you want to look (or into the past, if you wish).
@@ -79,7 +77,7 @@ The function $$x = \frac{1}{2} g t^2 + v_0 t + x_0$$, where $$x$$ is usually wri
 This is the powerful feature of physics that fascinates me: if we know the initial velocity $$v_0$$ and the initial position $$x_0$$, we can compute the bodies' entire history ($$t$$ negative) and future ($$t$$ positive).
 Just insert the respective numbers (preferably all in the same [unit system](https://en.wikipedia.org/wiki/International_System_of_Units)) and set $$t$$ to the time that you are interested in, and the above function magically returns where the body will be at that particular time.
 
-Deriving a Integration Scheme
+## Deriving a Integration Scheme
 
 If we now succeed in obtaining a scheme with which such a integral equation can be solved without applying the integration steps, we would have a very powerful system.
 I am going to gloss over quite a number of important facts in the following derivation of a "numerical integrator", but we are here to have fun, not to understand the minutia (there are already countless books on that topic and none of them were anywhere near "fun" last time I checked).
@@ -136,7 +134,7 @@ And because computers are extremely good at such calculations we don't even have
 Just let the computer do the work.
 This is the sort of solution that I really like, because you invest some thought into a scheme which allows one to offload all the work onto a computer, and then you can just lazily wait for it to finish its calculations.
 
-Recap
+## Recap
 Let's quickly restate what we have learned so far, before the new learned facts evaporate into thin air.
 Physical systems are described using differential equations (which for mechanics is done by applying Newtons second law).
 Because these equations quickly become unsolvable for more complex systems, and because we are lazy as hell, we want to find a method of solving the equations approximately with a computer.
@@ -144,6 +142,6 @@ This can be done by approximating the difference quotient for small steps in tim
 Finally we arrived at a equation which iteratively lets us calculate the position of a particle/body, allowing us to obtain a complete trajectory.
 Implementing this iteration would free us of slaving over the calculations (at least if your job was to calculate trajectories) because we can just give the work to a more competent entity, i.e. a computer.
 
-Outlook
+##Outlook
 In the next part we want to get to coding the integrator in a more general form.
 This will allow us to calculate the trajectory of a falling body, so yeah... That's something to look forward to.
