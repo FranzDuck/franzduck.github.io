@@ -8,12 +8,6 @@
 		<body>
 			<nav>
 	    		<ul>
-				{% if page.usemathjax %}
-				<script type="text/javascript" async
- 				src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-  				</script>
-				{% end if %}
-				
 	        		<li><a href="/">Home</a></li>
 		        	<li><a href="/about">About</a></li>
 	        		<!--<li><a href="/cv">CV</a></li>-->
@@ -21,6 +15,11 @@
 	    		</ul>
 			</nav>
 			<div class="container">
+				{% if page.usemathjax %}
+				<script type="text/javascript" async
+ 				src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  				</script>
+				{% end if %}
 			
 			{{ content }}
 			
