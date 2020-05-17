@@ -1,12 +1,13 @@
 ---
-title: Simulating Shit for Fun and Profit 1
+title: "Simulating Shit for Fun and Profit 1"
+date: 2020-5-17
 usemathjax: true
 ---
 
 # Simulating Shit for Fun and Profit 1
 
 A fascinating fact of physical theories is that they enable us to compute everything.
-By that I mean, once you have found out the rules that govern a system, for example $F = ma$ for mechanics, you can in theory calculate any possible system described by those rules.
+By that I mean, once you have found out the rules that govern a system, for example $$F = ma$$ for mechanics, you can in theory calculate any possible system described by those rules.
 No limitations on how far into the future you want to look (or into the past, if you wish).
 Just plug in the numbers and you can predict the future in its entirety.
 
@@ -50,23 +51,25 @@ $$
 F = m a = m \dot{v} = m \ddot{x} = F_{ \text{grav}}_{} = m g,
 $$
 where $v$ is the velocity of the particle and $x$ the position.
-If you are not familiar with the notation of writing dots for derivations of the time variable, note that $\dot{a} = a'(t)$ in the notation that most student learn in school.
+If you are not familiar with the notation of writing dots for derivations of the time variable, note that $$\dot{a} = a'(t)$$ in the notation that most student learn in school.
 
 This in fact is a simple form of a differential equation.
 The fact that such systems are described by differential equations and solving differential equations is hard, is the reason why even slightly more complex systems become unsolvable in general as I have mentioned above.
 Now normally you would take the last part of the equation and integrate it twice to obtain the solution:
+$$
 \begin{gather}
 m \ddot{x} = m g \Leftrightarrow \ddot{x} = g \text{, integrate once:}\\
 \Leftrightarrow \dot{x} = gt + v_0 \text{ integrate a second time:}\\
 \Leftrightarrow x = \frac{1}{2} g t^2 + v_0 t + x_0.
 \end{gather}
+$$
 If you could not follow the derivation above, don't worry.
 While the technical steps used are not particularly hard they are also not required to understand the rest of what I am going to write.
 The important thing is how the above equation was determined: by integration.
 This, as was already mentioned above is not possible in general, even if we just increase the complexity by a tiny bit, for example if we were to add another body to the equation that interacts with the first body.
 The second important thing is the interpretation of the equation.
-The function $x = \frac{1}{2} g t^2 + v_0 t + x_0$, where $x$ is usually written $x(t)$ to show that it is a function dependent on time, describes the bodies' position over time.
-This is the powerful feature of physics that fascinates me: if we know the initial velocity $v_0$ and the initial position $x_0$, we can compute the bodies' entire history ($t$ negative) and future ($t$ positive).
+The function $$x = \frac{1}{2} g t^2 + v_0 t + x_0$$, where $$x$$ is usually written $$x(t)$$ to show that it is a function dependent on time, describes the bodies' position over time.
+This is the powerful feature of physics that fascinates me: if we know the initial velocity $$v_0$$ and the initial position $$x_0$$, we can compute the bodies' entire history ($$t$$ negative) and future ($$t$$ positive).
 Just insert the respective numbers (preferably all in the same [unit system](https://en.wikipedia.org/wiki/International_System_of_Units)) and set $t$ to the time that you are interested in, and the above function magically returns where the body will be at that particular time.
 
 ## Deriving a Integration Scheme
@@ -75,37 +78,45 @@ If we now succeed in obtaining a scheme with which such a integral equation can 
 I am going to gloss over quite a number of important facts in the following derivation of a "numerical integrator", but we are here to have fun, not to understand the minutia (there are already countless books on that topic and none of them were anywhere near "fun" last time I checked).
 So here goes our "handwaving" derivation:
 Recall from your calculus class that the derivation is determined by forming the limit of the difference quotient:
+$$
 \begin{equation}
 \dot{x}(t) = x'(t) = \lim_{h \to 0} _{}\frac{x(t+h) - x(t)}{h}
-\end{equation}
-The idea is now to accept that we are not exactly determining the limit of $h\to 0$ if we choose $h$ to be a "small number" but instead only get a approximation of the derivative.
-For example just set $h = 0.0000001$ and you might get very close to the actual value.
-To denote that we are only working with a "approximate limit" we often use $\Delta t$ instead of $h$.
+\e/nd{equation}
+$$
+The idea is now to accept that we are not exactly determining the limit of $$h\to 0$$ if we choose $$h$$ to be a "small number" but instead only get a approximation of the derivative.
+For example just set $$h = 0.0000001$$ and you might get very close to the actual value.
+To denote that we are only working with a "approximate limit" we often use $\Delta t$ instead of $$h$$.
 Hence the equation becomes:
+$$
 \begin{equation}
 \dot{x}(t) \approx \frac{x(t+\Delta t) - x(t)}{\Delta t} \text{ for small } \Delta t.
 \end{equation}
+$$
 Cool, right?
 No longer do we have to derive the derivative using the "complicated" rules that we learned in school.
 Just insert the numbers in the equation and you are done.
-One important thing to note: Of course it is hard to say what is a sufficiently small number for $\Delta t$.
-Some processes might change a lot in a very short amount of time and thus require a higher "resolution" in time, i.e. a smaller value for $\Delta t$ than other processes.
+One important thing to note: Of course it is hard to say what is a sufficiently small number for $$\Delta t$$.
+Some processes might change a lot in a very short amount of time and thus require a higher "resolution" in time, i.e. a smaller value for $$\Delta t$$ than other processes.
 As an example: If we want to calculate the trajectory of a bullet, we would have to take way smaller "steps" in time (a bullet takes a fraction of a second to reach a near target) than if we want to calculate the trajectory of the earth in the solar system (the earth takes a whole year to revolve around the sun).
 
 Now that you have seen the basic mechanism of numeric estimation, let's get back to the problem at hand.
 Let's rewrite the differential equation for the velocity, which we saw above:
+$$
 \begin{gather}
 v(t) = \dot{x}(t) = gt + v_0 \text{, now let's apply the approximation:}\\
 \dot{x}(t) \approx \frac{x(t+\Delta t) - x(t)}{\Delta t} = gt + v_0
 \end{gather}
+$$
 Now we have not really gained anything in terms of integration so far, but if we reformulate the latter half of the last equation we obtain
+$$
 \begin{equation}
 \frac{x(t+\Delta t) - x(t)}{\Delta t} = gt + v_0 \Leftrightarrow x(t + \Delta t) = gt\Delta t + v_0 \Delta t + x(t)
 \end{equation}
+$$
 If you have not (yet) written many iterative programs you might not realize why the last equation is remarkable.
 But this equation in fact is a great success, actually it is (almost) the complete solution to our problem.
-The above equation is a iterative description of how to calculate the complete trajectory (approximately of course) given a initial position $x(t)$ for a later time $x(t+\Delta t)$.
-The fact that the second point calculated using the above formula is only one a small fraction of time later than the first one does not disturb us, as we can just apply the equation to the new point again and thus obtain the position at twice the time step: $x(t + \Delta t)$.
+The above equation is a iterative description of how to calculate the complete trajectory (approximately of course) given a initial position $$x(t)$$ for a later time $$x(t+\Delta t)$$.
+The fact that the second point calculated using the above formula is only one a small fraction of time later than the first one does not disturb us, as we can just apply the equation to the new point again and thus obtain the position at twice the time step: $$x(t + \Delta t)$$.
 And because computers are extremely good at such calculations we don't even have to calculate a lot.
 Just let the computer do the work.
 This is the sort of solution that I really like, because you invest some thought into a scheme which allows one to offload all the work onto a computer, and then you can just lazily wait for it to finish its calculations.
