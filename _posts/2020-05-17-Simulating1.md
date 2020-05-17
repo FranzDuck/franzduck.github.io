@@ -142,6 +142,8 @@ This can be done by approximating the difference quotient for small steps in tim
 Finally we arrived at a equation which iteratively lets us calculate the position of a particle/body, allowing us to obtain a complete trajectory.
 Implementing this iteration would free us of slaving over the calculations (at least if your job was to calculate trajectories) because we can just give the work to a more competent entity, i.e. a computer.
 
-##Outlook
+## Outlook
 In the next part we want to get to coding the integrator in a more general form.
 This will allow us to calculate the trajectory of a falling body, so yeah... That's something to look forward to.
+
+{% include image.html url="https://upload.wikimedia.org/wikipedia/commons/c/c9/Three_body_problem_figure-8_orbit_animation.gif" description="<b>Fig.1</b>: One of the few solvable three body configurations, image by 'MaxwellMolecule', CC-BY-SA 4.0, <a href='https://en.wikipedia.org/wiki/Three-body_problem#/media/File:Three_body_problem_figure-8_orbit_animation.gif'>[1]</a>" %}
