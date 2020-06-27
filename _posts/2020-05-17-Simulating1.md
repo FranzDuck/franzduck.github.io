@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Simulating Shit for Fun and Profit 1"
+title: "Simulating Stuff for Fun and Profit 1"
 date: 2020-5-17
 usemathjax: true
 ---
