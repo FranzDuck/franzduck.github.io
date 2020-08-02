@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\usetikzlibrary{calc}
+
+% \begin{tikzpicture}[dot/.style={circle,inner sep=1pt,fill,label={#1},name=#1},
+%   extended line/.style={shorten >=-#1,shorten <=-#1},
+%   extended line/.default=1cm]
+
+% \node [dot=A] at (0,0) {};
+% \node [dot=B] at (3,1) {};
+% \node [dot=P] at (1.9,-1.6) {};
+
+% \draw [extended line=0.5cm] (A) -- (B);
+% \draw [extended line] ($(A)!(P)!(B)$) -- (P);
+
+% \fill [red] ($(A)!(P)!(B)$) circle [radius=2pt];
+
+% \end{tikzpicture}
+\begin{tikzpicture}
+    \node[circle, fill=red] (A) at (0,0) {};
+    \node[circle, fill=blue] (B) at (4, 3) {};
+
+    \draw[dashed] (A) -- (B));
+    \node[name=P] at (3.2,0) {};
+    \draw[shorten >=-1cm,shorten <=-4cm] ($(A)!(P)!(B)$) --node[sloped, above, blue, xshift=-2cm] {Border Blue} node[sloped, below, red, xshift=.5cm] {Border Red} (P);
+\end{tikzpicture}
+\end{document}
