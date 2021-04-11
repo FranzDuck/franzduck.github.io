@@ -4,6 +4,20 @@
 			<title>{{ page.title }}</title>
 			<!-- link to main stylesheet -->
 			<link rel="stylesheet" type="text/css" href="/css/main.css">
+				{% if page.usemathjax %}
+                                <!-- <script type="text/x-mathjax-config"> -->
+                                <!--   MathJax.Ajax.config.path["Contrib"] = "//cdn.mathjax.org/mathjax/contrib"; -->
+                                <!-- </script> -->
+                                <!-- <script type="text/javascript" charset="utf-8"> -->
+                                <!--     MathJax = { -->
+                                <!--       loader: {load: ['[tex]/physics']}, -->
+                                <!--       tex: {packages: {'[+]': ['physics']}} -->
+                                <!--     }; -->
+                                <!-- </script> -->
+				<script type="text/javascript" async
+ 				src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  				</script>
+				{% endif %}
 		</head>
 		<body>
 			<nav>
@@ -15,11 +29,6 @@
 	    		</ul>
 			</nav>
 			<div class="container">
-				{% if page.usemathjax %}
-				<script type="text/javascript" async
- 				src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-  				</script>
-				{% endif %}
 			
 			{{ content }}
 			

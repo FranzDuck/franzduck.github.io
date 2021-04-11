@@ -49,3 +49,8 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+#bib_hdr {
+    color: grey;
+    margin-top: 3em;
+}

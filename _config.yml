@@ -1,5 +1,27 @@
 name: PStaerk
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+
+scholar:
+  style: ./assets/american-physics-society.csl
+  locale: en
+
+  sort_by: none
+  order: ascending
+
+  source: ./
+  bibliography: references.bib
+  bibliography_template: "{{reference}}"
+
+  replace_strings: true
+  join_strings:    true
+
+  details_dir:    bibliography
+  details_layout: bibtex.html
+  details_link:   Details
+
+  query: "@*"
+
 plugins:
     - jekyll-feed
+    - jekyll-scholar
